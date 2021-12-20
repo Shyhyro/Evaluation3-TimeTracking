@@ -7,3 +7,119 @@
 body {
     font-size: 62.5%;
 }
+
+#container {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    justify-content: space-evenly;
+    padding: 25px;
+}
+
+.card, .cardContainer, #container, .info, .info div {
+    display: flex;
+}
+
+.card {
+    flex-direction: column;
+    width: 400px;
+    height: 350px;
+}
+
+.title {
+    text-align: center;
+    background: #BF8FEE;
+}
+
+.info {
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 30%;
+    background: #EDEDED;
+}
+
+.info div {
+    text-align: center;
+    flex-direction: column;
+}
+
+.tasks {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    text-align: center;
+    width: 70%;
+    background: #F7F7F7;
+}
+
+.tasks div {
+    margin: 10px 10px ;
+}
+
+.cardContainer {
+    border: solid 2px #bf8fee;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+}
+
+.option {
+    display: flex;
+    flex-direction: row;
+}
+
+.delete, .see, .add {
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.delete {
+    position: relative;
+    top: 100px;
+    left: -60px;
+    background: #F9C7C7;
+    color: #E76060;
+}
+
+.delete:hover {
+    cursor: pointer;
+    background: #e76060;
+    color: #f9c7c7;
+}
+
+.see, .add {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    background: #DFC8F5;
+    color: #9148DC;
+}
+
+.see:hover, .add:hover {
+    cursor: pointer;
+    color: #DFC8F5;
+    background: #9148DC;
+}
+
+.green {
+    font-size: 40px;
+}
+
+.green, .inactive {
+    color: #87DB54;
+}
+
+.inactive:hover, .active:hover {
+    cursor: pointer;
+}
+
+.active {
+    color: #e76060;
+}
+
+.newTaskOption {
+    display: none;
+}

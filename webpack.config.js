@@ -1,5 +1,8 @@
 require('webpack');
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
     const config = argv.mode === 'development' ? devConfig() : prodConfig();
@@ -25,6 +28,9 @@ module.exports = (env, argv) => {
  * Mode dev
  */
 function devConfig() {
+    const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+    const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+    const TerserPlugin = require("terser-webpack-plugin");
 
     return {
         mode: 'development',
@@ -33,18 +39,17 @@ function devConfig() {
             rules: [
                 {
                     test: /\.css$/i,
-                    use: ["style-loader", "css-loader"]
+                    use: [MiniCssExtractPlugin.loader, "css-loader"]
+                },
+                {
+                    test: /\.(png|jpe?g|gif)$/i,
+                    type: 'asset/resource',
+                    generator: {filename: 'build/images/[name][ext]'}
                 },
                 {
                     test: /\.tsx?$/,
                     use: 'ts-loader',
                     exclude: /node_modules/,
-                },
-                // Règles fichiers images
-                {
-                    test: /\.(png|jpe?g|gif)$/i,
-                    type: 'asset/resource',
-                    generator: {filename: 'build/images/[name][ext]'}
                 },
             ]
         },
@@ -60,47 +65,6 @@ function devConfig() {
             port: 9000,
             hot: true,
             open: true,
-        },
-
-        optimization: {minimize: false},
-    }
-}
-
-
-/**
- * Mode production
- */
-function prodConfig() {
-    const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-    const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-    const TerserPlugin = require("terser-webpack-plugin");
-
-    return {
-        mode: 'production',
-        module: {
-            rules: [
-                {
-                    test: /\.css$/i,
-                    use: [MiniCssExtractPlugin.loader, "css-loader"]
-                },
-
-                // Règles fichiers images
-                {
-                    test: /\.(png|jpe?g|gif)$/i,
-                    type: 'asset/resource',
-                    generator: {filename: 'build/images/[name][ext]'}
-                },
-
-                // Configuration de babel pour les navigateurs plus anciens.
-                /*{
-                    test: /\.js$/,
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                        plugins: ['@babel/plugin-proposal-object-rest-spread']
-                    }
-                },*/
-            ]
         },
 
         optimization: {
