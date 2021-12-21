@@ -1,3 +1,13 @@
+:root {
+    --blanc: #F7F7F7;
+    --blanc-2: #EDEDED;
+    --mauve: #DFC8F5;
+    --violet: #9148DC;
+    --rouge: #e76060;
+    --rouge-pale: #F9C7C7;
+    --vert: #87DB54;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,47 +18,52 @@ body {
     font-size: 62.5%;
 }
 
-#container {
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    justify-content: space-evenly;
-    padding: 25px;
+/* Height - Width*/
+.cardContainer, #popup {
+    height: 100%;
+    width: 100%;
 }
 
-.card, .cardContainer, #container, .info, .info div {
+/* Flex */
+.card, .cardContainer, #container, .info, .info div, .delete, .see, .tasks, .add, .option  {
     display: flex;
 }
 
-.card {
+.card, .info, .info div, .tasks {
     flex-direction: column;
+}
+
+#container, .info, .tasks {
+    justify-content: space-evenly;
+}
+
+/* Container */
+#container {
+    flex-wrap: wrap;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 25px;
+}
+
+.card {
     width: 400px;
     height: 350px;
 }
 
 .title {
     text-align: center;
-    background: #BF8FEE;
 }
 
 .info {
-    flex-direction: column;
-    justify-content: space-evenly;
     width: 30%;
-    background: #EDEDED;
 }
 
-.info div {
+.info div, .tasks {
     text-align: center;
-    flex-direction: column;
 }
 
 .tasks {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    text-align: center;
     width: 70%;
-    background: #F7F7F7;
 }
 
 .tasks div {
@@ -56,14 +71,11 @@ body {
 }
 
 .cardContainer {
-    border: solid 2px #bf8fee;
-    height: 100%;
-    width: 100%;
+    border: solid 2px var(--violet);
     flex-direction: row;
 }
 
 .option {
-    display: flex;
     flex-direction: row;
 }
 
@@ -71,7 +83,6 @@ body {
     font-size: 24px;
     width: 50px;
     height: 50px;
-    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
@@ -81,45 +92,73 @@ body {
     position: relative;
     top: 100px;
     left: -60px;
-    background: #F9C7C7;
-    color: #E76060;
-}
-
-.delete:hover {
-    cursor: pointer;
-    background: #e76060;
-    color: #f9c7c7;
 }
 
 .see, .add {
     margin-left: 15px;
     margin-bottom: 10px;
-    background: #DFC8F5;
-    color: #9148DC;
-}
-
-.see:hover, .add:hover {
-    cursor: pointer;
-    color: #DFC8F5;
-    background: #9148DC;
 }
 
 .green {
     font-size: 40px;
 }
 
-.green, .inactive {
-    color: #87DB54;
-}
-
-.inactive:hover, .active:hover {
-    cursor: pointer;
-}
-
-.active {
-    color: #e76060;
-}
-
 .newTaskOption {
     display: none;
+}
+
+#popup {
+    background: #f7f7f7;
+    position: absolute;
+}
+
+/* Colors */
+.green, .inactive {
+    color: var(--vert);
+}
+
+.active, .delete {
+    color: var(--rouge);
+}
+
+.delete:hover {
+    color: var(--rouge-pale);
+}
+
+.see:hover, .add:hover {
+    color: var(--mauve);
+}
+
+.see, .add {
+    color: var(--violet);
+}
+
+/* Background */
+.info {
+    background: var(--blanc-2);
+}
+
+#popup, .tasks {
+    background: var(--blanc);
+}
+
+.delete {
+    background: var(--rouge-pale);
+}
+
+.delete:hover {
+    background: var(--rouge);
+}
+
+.see, .add {
+    background: var(--mauve);
+}
+
+.see:hover, .add:hover, .title {
+    background: var(--violet);
+}
+
+/* Cursor */
+.delete:hover, .see:hover, .add:hover, .inactive:hover, .active:hover {
+    cursor: pointer;
 }
