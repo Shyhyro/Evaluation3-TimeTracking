@@ -1,5 +1,24 @@
 class Task {
 
+    edit () {
+        let task = document.querySelectorAll(".oneTask");
+        for (let i = 0; i < task.length ; i++) {
+            console.log('add edit option for :' + i);
+            task[i].addEventListener('click', function editTask () {
+
+                console.log('Click Edit on: ' + i);
+                task[i].innerHTML = `<input type='text' id='newContent'><button id='edit'>Submit</button`;
+                let button = <HTMLButtonElement>document.getElementById('edit') as HTMLButtonElement;
+
+                button.addEventListener('click', function () {
+                    let newContent = document.getElementById('newContent') as HTMLInputElement;
+                    task[i].innerHTML = newContent.value + '<i class="far fa-clock active"></i>';
+                    console.log('edit : ' + i + " -> " + newContent.value);
+                })
+            })
+        }
+    }
+
     delete() {
         let deleteButton = document.querySelectorAll(".delete");
         for (let i =0; i<deleteButton.length; i++) {
@@ -7,6 +26,10 @@ class Task {
                 console.log('delete: ' + i);
 
                 document.getElementsByClassName('overlay')[i]!.remove();
+
+                new Task().delete();
+                new Task().add();
+                new Task().edit();
             })
         }
     }
@@ -16,6 +39,7 @@ class Task {
 
         for(let i=0; i < addButton.length; i++) {
             console.log('create add task event for :' + i);
+
 
             addButton[i].addEventListener('click', function () {
 
@@ -34,14 +58,17 @@ class Task {
 
                     if (task[i].value.length >= 4) {
                         console.log('new task ' + i + " = " + task[i].value);
-                        list[i].innerHTML += `
-                            <div>${task[i].value} <i class="far fa-clock inactive"></i></div>
-                        `
+                        list[i].innerHTML += `<div>${task[i].value} <i class="far fa-clock inactive"></i></div>`;
+
                     }
                     else {
                         console.log('New task are not >= 4 letters');
                     }
                     addTaskOption[i].style.display = "none";
+
+                    new Task().delete();
+                    new Task().add();
+                    new Task().edit();
                 })
             })
         }

@@ -55,6 +55,7 @@ body {
 }
 
 .info {
+    border-radius: 0 0 0 25px;
     width: 30%;
 }
 
@@ -63,6 +64,7 @@ body {
 }
 
 .tasks {
+    border-radius: 0 0 25px 0;
     width: 70%;
 }
 
@@ -71,7 +73,6 @@ body {
 }
 
 .cardContainer {
-    border: solid 2px var(--violet);
     flex-direction: row;
 }
 
@@ -108,6 +109,8 @@ body {
 }
 
 #popup {
+    display: none;
+    z-index: 2;
     background: #f7f7f7;
     position: absolute;
 }
@@ -156,6 +159,10 @@ body {
 
 .see:hover, .add:hover, .title {
     background: var(--violet);
+}
+
+.info, .tasks {
+    border: solid 4px var(--violet);
 }
 
 /* Cursor */

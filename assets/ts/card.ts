@@ -20,7 +20,7 @@ class Card {
                         <div class="info">
                             <div>
                                 <i class="far fa-clock green"></i>
-                                <span class="timer">1h</span>
+                                <span class="timer">0h</span>
                             </div>
                             <div>
                                 <i class="far fa-calendar green"></i>
@@ -28,8 +28,8 @@ class Card {
                             </div>
                         </div>
                         <div class="tasks">
-                            <div>Tache 1 <i class="far fa-clock active"></i></div>
-                            <div>Tache 1 <i class="far fa-clock inactive"></i></div>
+                            <div class="oneTask">Tache 1 <i class="far fa-clock active"></i></div>
+                            <div class="oneTask">Tache 1 <i class="far fa-clock inactive"></i></div>
                         </div>
                     </div>
                 </div>
