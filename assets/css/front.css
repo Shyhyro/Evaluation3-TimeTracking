@@ -113,6 +113,7 @@ body {
     z-index: 2;
     background: #f7f7f7;
     position: absolute;
+    top: 0;
 }
 
 /* Colors */
@@ -163,6 +164,12 @@ body {
 
 .info, .tasks {
     border: solid 4px var(--violet);
+}
+
+#newCard {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /* Cursor */
