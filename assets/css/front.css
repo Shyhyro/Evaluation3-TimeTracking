@@ -2,7 +2,7 @@
     --blanc: #F7F7F7;
     --blanc-2: #EDEDED;
     --mauve: #DFC8F5;
-    --violet: #9148DC;
+    --violet: #BF8FEE;
     --rouge: #e76060;
     --rouge-pale: #F9C7C7;
     --vert: #87DB54;
@@ -18,30 +18,54 @@ body {
     font-size: 62.5%;
 }
 
+/* Font */
+#container, h1 {
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 36px;
+}
+
 /* Height - Width*/
 .cardContainer, #popup {
     height: 100%;
     width: 100%;
 }
 
+#popupContent .tasks, #popupContent .oneTask {
+    width: 100%;
+}
+
 /* Flex */
-.card, .cardContainer, #container, .info, .info div, .delete, .see, .tasks, .add, .option  {
+.card, .cardContainer, #container, .info, .info div, .delete, .see, .tasks, .add, .option, #popupContent div div, #popupContent div, #popupContent .oneTask {
     display: flex;
 }
 
-.card, .info, .info div, .tasks {
+.card, .info, .info div, .tasks, #newCard, #popupContent div div {
     flex-direction: column;
 }
 
-#container, .info, .tasks {
+.cardContainer, .option, #popupContent div, #popupContent .oneTask {
+    flex-direction: row;
+}
+
+#container, .info, .tasks, .popupInfo, .popupTask, #popupContent .oneTask {
     justify-content: space-evenly;
+}
+
+.title, .popupInfo, .info div, .tasks {
+    text-align: center;
+}
+
+.popupInfo, .delete, .see, .add, #popupContent .tasks {
+    align-items: center;
 }
 
 /* Container */
 #container {
     flex-wrap: wrap;
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
     padding: 25px;
 }
 
@@ -50,20 +74,13 @@ body {
     height: 350px;
 }
 
-.title {
-    text-align: center;
-}
-
 .info {
     border-radius: 0 0 0 25px;
     width: 30%;
 }
 
-.info div, .tasks {
-    text-align: center;
-}
-
 .tasks {
+    overflow-y: auto;
     border-radius: 0 0 25px 0;
     width: 70%;
 }
@@ -72,20 +89,11 @@ body {
     margin: 10px 10px ;
 }
 
-.cardContainer {
-    flex-direction: row;
-}
-
-.option {
-    flex-direction: row;
-}
-
 .delete, .see, .add {
     font-size: 24px;
     width: 50px;
     height: 50px;
     justify-content: center;
-    align-items: center;
     border-radius: 25px;
 }
 
@@ -116,24 +124,55 @@ body {
     top: 0;
 }
 
+#newCard {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+button {
+    border: unset;
+}
+
+button, input {
+    padding: 5px 10px;
+}
+
+#popupContent {
+    font-size: 1.3rem;
+}
+
+.popupInfo {
+    width: 20%;
+}
+
+.popupTask {
+    width: 80%;
+}
+
+.popupTask .tasks {
+    min-height: 500px;
+}
+
 /* Colors */
 .green, .inactive {
     color: var(--vert);
 }
 
-.active, .delete {
+.active, .delete, .red {
     color: var(--rouge);
 }
 
-.delete:hover {
+.delete:hover, .red:hover {
     color: var(--rouge-pale);
 }
 
-.see:hover, .add:hover {
+.see:hover, .add:hover, .mauve:hover {
     color: var(--mauve);
 }
 
-.see, .add {
+.see, .add, .mauve {
     color: var(--violet);
 }
 
@@ -146,19 +185,19 @@ body {
     background: var(--blanc);
 }
 
-.delete {
+.delete, .red {
     background: var(--rouge-pale);
 }
 
-.delete:hover {
+.delete:hover, .red:hover {
     background: var(--rouge);
 }
 
-.see, .add {
+.see, .add, .mauve {
     background: var(--mauve);
 }
 
-.see:hover, .add:hover, .title {
+.see:hover, .add:hover, .title, .mauve:hover {
     background: var(--violet);
 }
 
@@ -166,13 +205,7 @@ body {
     border: solid 4px var(--violet);
 }
 
-#newCard {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 /* Cursor */
-.delete:hover, .see:hover, .add:hover, .inactive:hover, .active:hover {
+button, input, .delete:hover, .see:hover, .add:hover, .inactive:hover, .active:hover {
     cursor: pointer;
 }

@@ -2,6 +2,35 @@
 import {Popup} from "./popup.ts";
 
 class Task {
+
+    inactiveToActive () {
+        let inactive:NodeListOf<HTMLElement> = document.querySelectorAll(".inactive");
+
+        for ( let i = 0 ; i < inactive.length ; i++ ) {
+            inactive[i].addEventListener('click', function changeColors () {
+                inactive[i].classList.remove('inactive');
+                inactive[i].classList.add('active');
+
+                new Task().inactiveToActive();
+                new Task().activeToInactive();
+            })
+        }
+    }
+
+    activeToInactive () {
+        let active:NodeListOf<HTMLElement> = document.querySelectorAll(".active");
+
+        for ( let i = 0 ; i < active.length ; i++ ) {
+            active[i].addEventListener('click', function changeColors () {
+                active[i].classList.remove('active');
+                active[i].classList.add('inactive');
+
+                new Task().activeToInactive();
+                new Task().inactiveToActive();
+            })
+        }
+    }
+
     edit () {
         let taskEdit = document.querySelectorAll(".oneTaskEdit");
 
@@ -11,13 +40,20 @@ class Task {
                 console.log('Click Edit on: ' + i);
                 let task = document.querySelectorAll(".oneTask");
 
-                task[i].innerHTML = `<input type='text' id='newContent'><button id='edit'>Submit</button`;
+                task[i].innerHTML = `<input type='text' id='newContent'><button id='edit' class="mauve">Submit</button`;
                 let button = <HTMLButtonElement>document.getElementById('edit') as HTMLButtonElement;
 
                 button.addEventListener('click', function () {
                     let newContent = document.getElementById('newContent') as HTMLInputElement;
-                    task[i].innerHTML = newContent.value + '<i class="far fa-clock inactive"></i>';
-                    console.log('edit : ' + i + " -> " + newContent.value);
+                    if (newContent.value.length >= 4) {
+                        task[i].innerHTML = '<button class="oneTaskEdit mauve" type="button">Edit</button>' + newContent.value + '<i class="far fa-clock inactive"></i>';
+                        console.log('edit : ' + i + " -> " + newContent.value);
+
+                        new Task().edit();
+                    }
+                    else {
+                        console.log('task Edit: ' + i + " are < 4");
+                    }
                 })
             })
         }

@@ -11,9 +11,9 @@ class Card
         addCardButton.addEventListener('click', function () {
             console.log('Click create new task');
             let content = document.getElementById("newCardTitle") as HTMLInputElement;
+
             if (content.value.length >= 4 ) {
                 new Card().create(content.value);
-
                 new Task().delete();
                 new Task().add();
                 new Task().edit();
@@ -50,8 +50,8 @@ class Card
                             </div>
                         </div>
                         <div class="tasks">
-                            <div class="oneTask"><button class="oneTaskEdit" type="button">Edit</button>Tache 1 <i class="far fa-clock active"></i></div>
-                            <div class="oneTask"><button class="oneTaskEdit" type="button">Edit</button>Tache 2 <i class="far fa-clock inactive"></i></div>
+                            <div class="oneTask"><button class="oneTaskEdit mauve" type="button">Edit</button>Tache 1 <i class="far fa-clock inactive"></i></div>
+                            <div class="oneTask"><button class="oneTaskEdit mauve" type="button">Edit</button>Tache 2 <i class="far fa-clock inactive"></i></div>
                         </div>
                     </div>
                 </div>

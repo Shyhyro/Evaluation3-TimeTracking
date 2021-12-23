@@ -17,4 +17,7 @@ new Task().delete();
 new Task().edit();
 new Popup().open();
 
+new Task().inactiveToActive();
+new Task().activeToInactive();
+
 new Card().addCard();
