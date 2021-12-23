@@ -1,3 +1,4 @@
+// Imports
 import "./css/front.css";
 // @ts-ignore
 import {Card} from "./ts/card.ts";
@@ -6,9 +7,7 @@ import {Task} from "./ts/task.ts";
 // @ts-ignore
 import {Popup} from "./ts/popup.ts";
 
-console.log('loading')
-
-
+// Calls
 new Card().create('Projet 1');
 new Card().create('Projet 2');
 

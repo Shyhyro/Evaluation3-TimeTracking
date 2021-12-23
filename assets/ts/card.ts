@@ -14,10 +14,16 @@ class Card
 
             if (content.value.length >= 4 ) {
                 new Card().create(content.value);
-                new Task().delete();
+
                 new Task().add();
+                new Task().delete();
                 new Task().edit();
                 new Popup().open();
+
+                new Task().inactiveToActive();
+                new Task().activeToInactive();
+
+                new Card().addCard();
             }
             else {
                 console.log("new Card name < 4");

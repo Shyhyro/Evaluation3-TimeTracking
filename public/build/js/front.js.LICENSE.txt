@@ -1,3 +1,5 @@
+/*! ./card.ts */
+
 /*! ./css/front.css */
 
 /*! ./popup.ts */

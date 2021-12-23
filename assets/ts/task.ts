@@ -1,5 +1,7 @@
 // @ts-ignore
 import {Popup} from "./popup.ts";
+// @ts-ignore
+import {Card} from "./card.ts";
 
 class Task {
 
@@ -66,10 +68,15 @@ class Task {
             deleteButton[i].addEventListener('click', function () {
                 document.getElementsByClassName('overlay')[i]!.remove();
 
-                new Task().delete();
                 new Task().add();
+                new Task().delete();
                 new Task().edit();
                 new Popup().open();
+
+                new Task().inactiveToActive();
+                new Task().activeToInactive();
+
+                new Card().addCard();
             })
         }
     }
@@ -99,10 +106,15 @@ class Task {
 
                     addTaskOption[i].style.display = "none";
 
-                    new Task().delete();
                     new Task().add();
+                    new Task().delete();
                     new Task().edit();
                     new Popup().open();
+
+                    new Task().inactiveToActive();
+                    new Task().activeToInactive();
+
+                    new Card().addCard();
                 })
             })
         }
