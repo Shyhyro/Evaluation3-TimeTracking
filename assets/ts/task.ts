@@ -51,9 +51,16 @@ class Task {
                         task[i].innerHTML = '<button class="oneTaskEdit mauve" type="button">Edit</button>' + newContent.value + '<i class="far fa-clock inactive"></i>';
                         console.log('edit : ' + i + " -> " + newContent.value);
 
+                        new Task().add();
+                        new Task().delete();
                         new Task().edit();
-                    }
-                    else {
+                        new Popup().open();
+
+                        new Task().inactiveToActive();
+                        new Task().activeToInactive();
+
+                        new Card().addCard();
+                    } else {
                         console.log('task Edit: ' + i + " are < 4");
                     }
                 })
