@@ -24,8 +24,7 @@ class Card
                 new Task().activeToInactive();
 
                 new Card().addCard();
-            }
-            else {
+            } else {
                 console.log("new Card name < 4");
             }
         })

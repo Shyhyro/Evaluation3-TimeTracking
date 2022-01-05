@@ -41,10 +41,6 @@ class Popup {
                 // On click change display of popup for "none
                 close.addEventListener('click', function () {
                     popup.style.display = "none";
-
-                    new Task().delete();
-                    new Task().add();
-                    new Task().edit();
                 })
             })
         }
