@@ -10,11 +10,14 @@ class Task {
 
         for ( let i = 0 ; i < inactive.length ; i++ ) {
             inactive[i].addEventListener('click', function changeColors () {
-                inactive[i].classList.remove('inactive');
-                inactive[i].classList.add('active');
+                let active:NodeListOf<HTMLElement> = document.querySelectorAll(".active");
+                if (active.length < 1) {
+                    inactive[i].classList.remove('inactive');
+                    inactive[i].classList.add('active');
 
-                new Task().inactiveToActive();
-                new Task().activeToInactive();
+                    new Task().inactiveToActive();
+                    new Task().activeToInactive();
+                }
             })
         }
     }
@@ -73,7 +76,7 @@ class Task {
 
         for (let i =0; i<deleteButton.length; i++) {
             deleteButton[i].addEventListener('click', function () {
-                document.getElementsByClassName('overlay')[i]!.remove();
+                document.getElementsByClassName('overlay')[i].remove();
 
                 new Task().add();
                 new Task().delete();
@@ -95,9 +98,6 @@ class Task {
             addButton[i].addEventListener('click', () => {
                 let addTaskOption:NodeListOf<HTMLElement> = document.querySelectorAll(".newTaskOption");
                 addTaskOption[i].style.display = "block";
-
-                // @ts-ignore
-
             });
             this.addTask(i);
         }
@@ -114,7 +114,6 @@ class Task {
 
                 list[i].innerHTML += `<div class="oneTask"><button class="oneTaskEdit mauve" type="button">Edit</button>${task[i].value}<i class="far fa-clock inactive"></i></div>`;
 
-                /*new Task().add();*/
                 new Task().delete();
                 new Task().edit();
                 new Popup().open();
