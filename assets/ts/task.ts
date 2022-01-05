@@ -88,43 +88,48 @@ class Task {
         }
     }
 
-    add() {
+    add = () => {
         let addButton = document.querySelectorAll(".add");
         for(let i=0; i < addButton.length; i++) {
 
-            addButton[i].addEventListener('click', function () {
-                console.log('add task for element: ' + i);
+            addButton[i].addEventListener('click', () => {
                 let addTaskOption:NodeListOf<HTMLElement> = document.querySelectorAll(".newTaskOption");
                 addTaskOption[i].style.display = "block";
-                let addNewTask = document.querySelectorAll(".addNewTask");
 
-                addNewTask[i].addEventListener('click', function () {
-                    console.log('create new task for:' + i);
+                // @ts-ignore
 
-                    let task:NodeListOf<HTMLInputElement> = document.querySelectorAll(".newTask");
-                    let list = document.querySelectorAll(".tasks");
-
-                    if (task[i].value.length >= 4) {
-                        console.log('new task ' + i + " = " + task[i].value);
-                        list[i].innerHTML += `<div>${task[i].value} <i class="far fa-clock inactive"></i></div>`;
-                    } else {
-                        console.log('New task are not >= 4 letters');
-                    }
-
-                    addTaskOption[i].style.display = "none";
-
-                    new Task().add();
-                    new Task().delete();
-                    new Task().edit();
-                    new Popup().open();
-
-                    new Task().inactiveToActive();
-                    new Task().activeToInactive();
-
-                    new Card().addCard();
-                })
-            })
+            });
+            this.addTask(i);
         }
+    }
+
+    addTask(i:number) {
+        let addTaskOption:NodeListOf<HTMLElement> = document.querySelectorAll(".newTaskOption");
+        let addNewTask = document.querySelectorAll(".addNewTask");
+        addNewTask[i].addEventListener('click', () => {
+            let task:NodeListOf<HTMLInputElement> = document.querySelectorAll(".newTask");
+            let list = document.querySelectorAll(".tasks");
+
+            if (task[i].value.length >= 4) {
+
+                list[i].innerHTML += `<div class="oneTask"><button class="oneTaskEdit mauve" type="button">Edit</button>${task[i].value}<i class="far fa-clock inactive"></i></div>`;
+
+                /*new Task().add();*/
+                new Task().delete();
+                new Task().edit();
+                new Popup().open();
+
+                new Task().inactiveToActive();
+                new Task().activeToInactive();
+
+                new Card().addCard();
+
+            } else {
+                console.log('New task are not >= 4 letters');
+            }
+
+            addTaskOption[i].style.display = "none";
+        });
     }
 }
 
